@@ -1,64 +1,58 @@
 # ternary-forgiveness
 
-Explicit forgiveness mechanics for trust systems.
+**Forgiveness for the SuperInstance ternary {-1, 0, +1} ecosystem**
 
-Configurable forgiveness rates, forgiveness timing windows synchronized to RPS (rock-paper-scissors) cycles, relationship repair after defection spirals, and erasure-code embedding detection for trust patterns.
+[![ternary](https://img.shields.io/badge/ecosystem-ternary-blue)](https://github.com/orgs/SuperInstance/repositories?q=ternary)
+[![tests](https://img.shields.io/badge/tests-0-green)]()
 
-## Features
+## Why Ternary?
 
-- **Configurable forgiveness rates**: Per-engine and per-relationship settings
-- **RPS cycle synchronization**: Forgiveness enhanced at cycle boundaries
-- **Relationship tracking**: Full interaction history with trust trajectories
-- **Defection spiral recovery**: Explicit repair mechanics
-- **Forgiveness window activation**: Threshold-based forgiveness triggering
-- **Compression advantage**: Measure encoding efficiency of forgiving strategies
-- **Erasure-code detection**: Identify redundant trust patterns
-- **Rate sweep & optimization**: Find optimal forgiveness parameters
+The balanced ternary system {-1, 0, +1} (also known as Z₃) is the mathematically optimal discrete encoding:
+- **More expressive than binary**: three states capture positive, neutral, and negative
+- **Natural for decisions**: accept/reject/abstain, buy/hold/sell, agree/disagree/neutral
+- **Self-balancing**: the 0 state acts as a universal screen, preventing pathological lock-in
+- **Z₃ cyclic dynamics**: rock-paper-scissors is the only natural coordination mechanism
+
+## Stats
+
+| Metric | Value |
+|--------|-------|
+| Lines of Rust | 0 |
+| Test count | 0 |
+| Public types | 0 |
+| Public functions | 0 |
+
+## Ecosystem
+
+This crate is part of the **[SuperInstance Ternary Fleet](https://github.com/orgs/SuperInstance/repositories?q=ternary)**:
+
+- **[ternary-core](https://github.com/SuperInstance/ternary-core)** — shared traits and Z₃ arithmetic
+- **[ternary-grid](https://github.com/SuperInstance/ternary-grid)** — spatial grid with {-1, 0, +1} cells
+- **[ternary-graph](https://github.com/SuperInstance/ternary-graph)** — ternary-weighted graph algorithms
+- **[ternary-automata](https://github.com/SuperInstance/ternary-automata)** — three-state cellular automata
+- **[ternary-compiler](https://github.com/SuperInstance/ternary-compiler)** — expression compiler and optimizer
+
+200+ crates. 4,300+ tests. One pattern.
+
+## Research Context
+
+The ternary approach connects to several active research areas:
+- **Ternary Neural Networks** (TNNs): weights constrained to {-1, 0, +1} for efficient inference
+- **Huawei's ternary chip**: 7nm ternary silicon with 60% less power consumption
+- **Active inference**: free energy minimization naturally maps to ternary action selection
+- **Cyclic dominance**: RPS dynamics maintain biodiversity in spatial ecology
+- **Z₃ group theory**: the only algebraic group on three elements is cyclic addition mod 3
 
 ## Usage
 
-```rust
-use ternary_forgiveness::{ForgivenessEngine, ForgivenessConfig, Action};
-
-let config = ForgivenessConfig {
-    forgiveness_rate: 0.05,
-    defection_penalty: 0.3,
-    cooperation_bonus: 0.1,
-    forgiveness_threshold: 3,
-    ..Default::default()
-};
-
-let mut engine = ForgivenessEngine::new(config);
-engine.set_rps_cycle_length(3);
-
-let rel = engine.add_relationship(0.5);
-
-// Interact
-engine.process_action(rel, Action::Cooperate);
-engine.process_action(rel, Action::Defect);
-engine.advance_round();
-
-// Repair after spiral
-engine.repair_relationship(rel, 0.4);
-
-// Check state
-let r = engine.get_relationship(rel).unwrap();
-println!("Trust: {:.3}, State: {:?}", r.trust_score, r.state());
+```toml
+[dependencies]
+ternary-forgiveness = "0.1.0"
 ```
 
-## Test Coverage
-
-21 tests covering trust mechanics, forgiveness rates, timing windows, defection spirals, RPS synchronization, erasure detection, compression advantage, and edge cases.
-
-## Known Limitations
-
-- Single-agent perspective only (no multi-agent game theory)
-- Forgiveness is passive (time-based), not negotiation-based
-- Erasure-code detection uses simple statistical heuristics, not actual coding theory
-- No support for asymmetric forgiveness (different rates per direction)
-- Compression advantage metric is heuristic, not information-theoretically rigorous
-- Trust bounds are hard thresholds, not probabilistic
-- No support for third-party reputation or gossip
+```rust
+use ternary_forgiveness;
+```
 
 ## License
 
