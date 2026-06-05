@@ -1,0 +1,11 @@
+[package]
+name = "ternary-forgiveness"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Explicit forgiveness mechanics for trust systems"
+repository = "https://github.com/SuperInstance/ternary-forgiveness"
+
+[lib]
+
+[dependencies]
